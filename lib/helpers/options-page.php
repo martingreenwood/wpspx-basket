@@ -59,6 +59,9 @@ function wpspx_basket_options_page(  ) {
 							<li><a href="<?php echo admin_url() . 'admin.php?page=wpspx-shows' ?>">Data Sync</a></li>
 							<li><a href="<?php echo admin_url() . 'admin.php?page=wpspx-cache' ?>">Cache</a></li>
 							<li><a class="active" href="<?php echo admin_url() . 'admin.php?page=wpspx-basket' ?>">Basket</a></li>
+							<?php if (is_plugin_active('wpspx-login/wp-spektrix-login.php')): ?>
+							<li><a href="<?php echo admin_url() . 'admin.php?page=wpspx-login' ?>">Login</a></li>
+							<?php endif; ?>
 							<li><a href="<?php echo admin_url() . 'admin.php?page=wpspx-license' ?>">License</a></li>
 							<li><a href="<?php echo admin_url() . 'admin.php?page=wpspx-support' ?>">Support</a></li>
 						</ul>
@@ -85,7 +88,16 @@ function wpspx_basket_options_page(  ) {
 								do_settings_sections( 'wpspxBasketPage' );
 								?>
 								<br /><br /><?php
-								submit_button('Save Settings');
+								$license = get_option( 'wpspx_licence_settings' );
+								$key = $license['wpspx_license_key'];
+								if ($key) {
+									$validation = wpspx_callback_validate($key);
+									if ($validation->success == 1):
+										submit_button('Save Settings');
+									else:
+										echo '<input disabled type="submit" name="disbaled" id="disbaled" class="button button-large" value="Please Register WPSPX to Update">';
+									endif;
+								}
 								?>
 							</section>
 						</div>
