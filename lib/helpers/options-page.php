@@ -23,6 +23,13 @@ function wpspx_basket_settings_init(  ) {
 		'wpspxBasketPage',
 		'wpspx_wpspxBasketPage_section'
 	);
+	add_settings_field(
+		'wpspx_basket_icon_colour',
+		__( 'Basket Icon colour', 'wpspx' ),
+		'wpspx_basket_icon_colour_render',
+		'wpspxBasketPage',
+		'wpspx_wpspxBasketPage_section'
+	);
 
 }
 
@@ -31,7 +38,17 @@ function wpspx_basket_colour_render(  ) {
 
 	$options = get_option( 'wpspx_basket_settings' );
 	?>
-	<input type='text' class="wpspx-color-field" name='wpspx_basket_settings[wpspx_basket_colour]' value='<?php echo $options['wpspx_basket_colour']; ?>'>
+	<input type='text' class="wpspx-color-field" name='wpspx_basket_settings[wpspx_basket_colour]' value='<?php if(isset($options['wpspx_basket_colour'])): echo $options['wpspx_basket_colour']; endif; ?>'>
+	<?php
+
+}
+
+// Basket background colour
+function wpspx_basket_icon_colour_render(  ) {
+
+	$options = get_option( 'wpspx_basket_settings' );
+	?>
+	<input type='text' class="wpspx-color-field" name='wpspx_basket_settings[wpspx_basket_icon_colour]' value='<?php if(isset($options['wpspx_basket_icon_colour'])): echo $options['wpspx_basket_icon_colour']; endif; ?>'>
 	<?php
 
 }
@@ -39,7 +56,7 @@ function wpspx_basket_colour_render(  ) {
 
 function wpspx_basket_section_callback(  ) {
 
-	echo __( '<p>Please select the colours you would like for your basket icon.</p>', 'wpspx' );
+	echo __( '<p>Please select the colours you would like for your basket.</p>', 'wpspx' );
 
 }
 
