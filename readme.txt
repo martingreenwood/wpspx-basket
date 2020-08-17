@@ -1,17 +1,19 @@
 === WPSPX Basket ===
-Contributors: beardeddev
-Tags: spektrix, tickets, api, booking, theatre
+Donate link: https://www.paypal.me/martingreenwood
+Tags: spektrix, tickets, api, booking, theatre, wpspx
 Requires at least: 4.3
 Tested up to: 5.4
-Stable tag: 1.0.0
-License: GPL v2 or later
+Requires PHP: 7.0
+Stable tag: 2.0.0
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Author: Martin Greenwood
 
 A slideout basket for WPSPX
 
 == Description ==
 
-This add-on provides a slide out basket for WPSPX.
+This add-on creates a slide out basket for the WPSPX Plugin - Requires WPSPX
 
 == Features out of the Box ==
 
